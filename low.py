@@ -8,7 +8,6 @@ def printAll():
 	print ("L:", low)
 	print "\n"
 
-
 def makeDeck():
 	deck = []
 	# 2 is the highest value with value 15

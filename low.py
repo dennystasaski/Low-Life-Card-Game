@@ -50,14 +50,13 @@ def isValidPlay(card, player):
 	for i in card:
 		if (i not in player):
 			return False
-	# not complete
+	
 	print len(card)
 	print len(prevCard)
 	if ((len(card) != len(prevCard) and len(prevCard) != 0) and len(card) != 4):
 		return False
 
 	# here I need to check if all the cards have same value
-
 	temp = card[0] / 10
 	for i in card[1:]:
 		if (i / 10 != temp):
@@ -70,7 +69,6 @@ def isValidPlay(card, player):
 	else:
 		return card[0] > prevCard[0]
 		
-# king sees low's hand but only values that king has
 def trade():
 	global king, queen, mid, low
 	print("Lows full hand", low)
@@ -150,12 +148,9 @@ def playHand():
 	lPass = False
 	handWin = False
 	
-	# trade()
+	trade()
 	
 
-	# while (trick):
-	# this loop prompt all 4 players
-	# need to add jump table to loop
 	while (not handWin):
 		if (not kPass):
 			print "King's turn"

@@ -1,5 +1,6 @@
 from random import shuffle
 
+# prints all player's hands
 def printAll():
 	print "\nPrinting all hands:"
 	print ("K:", king)
@@ -8,6 +9,7 @@ def printAll():
 	print ("L:", low)
 	print "\n"
 
+# Creates a new deck
 def makeDeck():
 	deck = []
 	# 2 is the highest value with value 15
@@ -17,6 +19,8 @@ def makeDeck():
 			deck.append(value*10 + suit)
 	return deck
 
+# Deals the first "placement" round, which gives all players equal
+# number of cards
 def dealPlacementHand(deck):
 	global king, queen, mid, low
 	shuffle(deck)
@@ -26,6 +30,7 @@ def dealPlacementHand(deck):
 	low = deck[39 : 52]
 	sortAll()
 
+# Deals a new hand
 def dealHand(deck):
 	global king, queen, mid, low
 	shuffle(deck)
@@ -35,6 +40,7 @@ def dealHand(deck):
 	low = deck[38 : 52]
 	sortAll()
 
+# Sorts the player's hands
 def sortAll():
 	global king, queen, mid, low
 	king.sort()
@@ -42,6 +48,7 @@ def sortAll():
 	mid.sort()
 	low.sort()
 
+# Returns true if the card(s) played was valid
 def isValidPlay(card, player):
 	global prevCard
 	if (len(card) < 1 or len(card) > 4):
@@ -55,7 +62,6 @@ def isValidPlay(card, player):
 	if ((len(card) != len(prevCard) and len(prevCard) != 0) and len(card) != 4):
 		return False
 
-	# here I need to check if all the cards have same value
 	temp = card[0] / 10
 	for i in card[1:]:
 		if (i / 10 != temp):
@@ -67,7 +73,8 @@ def isValidPlay(card, player):
 		return True
 	else:
 		return card[0] > prevCard[0]
-		
+
+# Trading that happens before the start of a hand		
 def trade():
 	global king, queen, mid, low
 	print("Lows full hand", low)
@@ -101,9 +108,11 @@ def trade():
 	sortAll()
 	printAll()
 
+# Updates the scorecard
 def updateScore():
 	pass
 
+# The given player plays their card(s)
 def playCard(player):
 	global thisPass, prevCard
 
@@ -135,7 +144,7 @@ def playCard(player):
 		del player[player.index(i)] 
 	return player
 
-# plays a hand, which consists of multiple "tricks"
+# plays a hand, which consists of multiple tricks
 def playHand():
 	global king, queen, mid, low
 	global passCount
@@ -149,7 +158,6 @@ def playHand():
 	
 	trade()
 	
-
 	while (not handWin):
 		if (not kPass):
 			print "King's turn"
@@ -177,6 +185,7 @@ def playHand():
 			print "low passed"
 
 	updateScore()	
+
 
 king = []
 queen = []

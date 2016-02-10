@@ -1,13 +1,5 @@
 from random import shuffle
 
-'''
-TODO
-list of card selections
-trading
-scoring
-multiple hands
-'''
-
 def printAll():
 	print "\nPrinting all hands:"
 	print ("K:", king)
@@ -209,11 +201,3 @@ dealPlacementHand(deck)
 printAll()
 playHand()
 printAll()
-
-# continue rounds until winner
-'''while (not gameWin):
-	dealHand(deck)
-	playHand()
-	break # remove this
-'''
-
